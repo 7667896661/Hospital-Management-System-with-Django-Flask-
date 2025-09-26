@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Appointments</h2>
+<a href="{% url 'core:appointment_create' %}">Schedule new appointment</a>
+<ul>
+  {% for a in appointments %}
+    <li>
+      <a href="{% url 'core:appointment_detail' a.pk %}">
+        {{ a.date_time }} - {{ a.doctor }} with {{ a.patient }} ({{ a.status }})
+      </a>
+    </li>
+  {% empty %}
+    <li>No appointments.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
