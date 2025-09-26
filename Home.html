@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Upcoming Appointments</h2>
+<ul>
+  {% for appt in upcoming %}
+    <li>{{ appt.date_time }} — {{ appt.doctor }} with {{ appt.patient }}</li>
+  {% empty %}
+    <li>No upcoming appointments.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
