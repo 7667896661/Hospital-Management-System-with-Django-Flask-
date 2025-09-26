@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Hospital Management</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <h1><a href="{% url 'core:home' %}">Hospital Management</a></h1>
+    <nav>
+      <a href="{% url 'core:doctor_list' %}">Doctors</a> |
+      <a href="{% url 'core:patient_list' %}">Patients</a> |
+      <a href="{% url 'core:appointment_list' %}">Appointments</a> |
+      {% if user.is_authenticated %}
+        Hi {{ user.username }} | <a href="{% url 'logout' %}">Logout</a>
+      {% else %}
+        <a href="{% url 'login' %}">Login</a> | <a href="{% url 'core:register' %}">Register</a>
+      {% endif %}
+    </nav>
+    <hr>
+  </header>
+
+  <main>
+    {% if messages %}
+      <ul class="messages">
+        {% for msg in messages %}
+          <li>{{ msg }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer><small>&copy; Simple Hospital System</small></footer>
+</body>
+</html>
