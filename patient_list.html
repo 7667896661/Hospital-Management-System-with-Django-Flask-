@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Patients</h2>
+<ul>
+  {% for p in patients %}
+    <li>{{ p }} — Age: {{ p.age }}</li>
+  {% empty %}<li>No patients yet.</li>{% endfor %}
+</ul>
+{% endblock %}
