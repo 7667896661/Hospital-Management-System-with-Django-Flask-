@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Appointment Detail</h2>
+<p><b>Doctor:</b> {{ appointment.doctor }}</p>
+<p><b>Patient:</b> {{ appointment.patient }}</p>
+<p><b>When:</b> {{ appointment.date_time }}</p>
+<p><b>Reason:</b> {{ appointment.reason }}</p>
+<p><b>Status:</b> {{ appointment.status }}</p>
+
+{% if appointment.prescription %}
+  <h3>Prescription</h3>
+  <p>{{ appointment.prescription.notes }}</p>
+  <p><b>Medicines:</b> {{ appointment.prescription.medicines }}</p>
+{% else %}
+  <a href="{% url 'core:prescription_create' appointment.pk %}">Add Prescription</a>
+{% endif %}
+{% endblock %}
